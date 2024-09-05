@@ -39,3 +39,14 @@ let comments = [
   {id: 4, postID: 3, userID: 4, comment: "Nice Post"}
 ];
 
+app.get('/users',( req, res)=>{
+res.json(users);
+});
+
+app.get('/posts', (req, res)=>{
+  res.json(posts);
+});
+
+app.get('/comments', (req,res )=>{
+  res.json(comments);
+});
