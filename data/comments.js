@@ -4,3 +4,5 @@ let comments = [
   {id: 3, postID: 2, userID: 1, comment: "Thanks for sharing"},
   {id: 4, postID: 3, userID: 4, comment: "Nice Post"}
 ];
+
+module.exports = comments;
