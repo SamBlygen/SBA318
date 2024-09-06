@@ -1,47 +1,37 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+
+
+const usersRouter = require('./routes/users');
+const postsRouter = require('./routes/announcements');
+const updatesRouter = require('./routes/updates');
+
 const app = express();
 
 
 app.set('view engine', 'ejs');
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 
 const port = 3000;
 
-app.get('/users', (req,res)=>{
-  res.json(users)
+
+app.use((req, res, next) => {
+  console.log(`${req.method} request for ${req.url}`);
+  next();
 });
-let users = [
-  {id: 1, name: 'Eric' },
-  {id: 2, name: 'Mason'},
-  {id: 3, name: 'Zoe'},
-  {id: 4, name: 'Arlene'},
-];
 
 
-app.get('/posts', (req, res)=>{
-  res.json(posts);
-});
-let posts = [
-  {id:1, userID: 1, content: 'Wah Gwann'},
-  {id:2, userID: 2, content: 'Welcome to Jamaica'},
-  {id:3, userID: 3, content: 'Lets have fun!'},
-  {id:4, userID: 4, content: 'Live, Love and be Thankful'},
-];
+app.use('/users', usersRouter);  
+app.use('/announcements', postsRouter);  
+app.use('/updates', updatesRouter);  
 
-app.get('/comments', (req,res )=>{
-  res.json(comments);
+
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' });
 });
-let comments = [
-  {id:1, postID: 1, userID: 2, comment: "Have fun!"},
-  {id: 2, postID: 4, userID: 3, comment: "Lets go! "},
-  {id: 3, postID: 2, userID: 1, comment: "Thanks for sharing"},
-  {id: 4, postID: 3, userID: 4, comment: "Nice Post"}
-];
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
