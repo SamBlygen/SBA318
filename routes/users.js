@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const users = require('../data/users');
+const users = require('../data/users.js');
 
 
 router.get('/', (req, res) => {
@@ -12,6 +12,11 @@ router.get('/', (req, res) => {
   }
 
   res.render('index', { title: 'Users', data: filteredUsers, type: 'users' });
+});
+
+
+router.get('/view', (req, res) => {
+  res.render('index', { title: 'Users', data: users, type: 'users' });
 });
 
 

@@ -7,10 +7,6 @@ router.get('/', (req, res) => {
   res.json(updates );
 });
 
-router.get('/view', (req, res) => {
-  res.render('updates', { updates });
-});
-
 
 router. post('/:id', (req, res)=>{
 const newUpdate ={

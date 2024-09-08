@@ -1,9 +1,22 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #fefae0;
+  font-family: 'Georgia', serif;
   text-align: center;
 }
 
 h1 {
-  color: #333;
+  color: #ff6347;
+}
+
+ul {
+  list-style-type: circle;
+  padding-left: 20px;
+}
+
+li {
+  padding: 12px;
+  border: 1px solid #ff6347;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  background-color: #fff5f2;
 }

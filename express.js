@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('Welcome to my trial and error!');
+  res.send('Welcome aboard! It is great to see you!');
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
