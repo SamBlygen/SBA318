@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express SBA</title>
+  <link rel="stylesheet" href="\style.css">
+</head>
+<body>
+  <h1>Welcome!</h1>
+
+  <% if (type === 'users') { %>
+    <h2>User List</h2>
+    <ul>
+      <% for (let user of data) { %>
+        <li><%= user.name %> (ID: <%= user.id %>)</li>
+      <% } %>
+    </ul>
+    <form action="/users" method="POST">
+      <input type="text" name="name" placeholder="Add new user">
+      <button type="submit">Add User</button>
+    </form>
+
+  <% } else if (type === 'announcements') { %>
+    <h2>Announcements</h2>
+    <ul>
+      <% for (let announcement of data) { %>
+        <li><%= announcement.content %></li>
+      <% } %>
+    </ul>
+    <form action="/announcements" method="POST">
+      <input type="text" name="content" placeholder="Add new announcement">
+      <button type="submit">Add Announcement</button>
+    </form>
+
+  <% } else if (type === 'updates') { %>
+    <h2>Updates</h2>
+    <ul>
+      <% for (let update of data) { %>
+        <li><%= update.content %></li>
+      <% } %>
+    </ul>
+    <form action="/updates" method="POST">
+      <input type="text" name="content" placeholder="Add new update">
+      <button type="submit">Add Update</button>
+    </form>
+  <% } %>
+</body>
+</html>

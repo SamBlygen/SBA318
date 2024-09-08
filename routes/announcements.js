@@ -6,6 +6,10 @@ router.get('/', (req, res) => {
   res.json(announcements);
 });
 
+router.get('/view', (req, res) => {
+  res.render('announcements', { announcements });
+});
+
 router.post('/', (req, res)=>{
   const newAnnouncement = {
     id: newAnnouncement.length + 1, 

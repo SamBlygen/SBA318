@@ -11,6 +11,11 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.send('Welcome to my trial and error!');
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,8 +34,9 @@ app.use('/announcements', postsRouter);
 app.use('/updates', updatesRouter);  
 
 
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found' });
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(port, () => {
